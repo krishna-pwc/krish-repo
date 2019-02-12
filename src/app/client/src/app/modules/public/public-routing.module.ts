@@ -8,27 +8,15 @@ import {
   PublicCollectionPlayerComponent
 } from './components';
 import { SignupGuard, LandingpageGuard } from './services';
-import { NuihComponent, LearnComponent, InnovateComponent } from './module/nuih';
 
 const routes: Routes = [
   {
-    path: '', canActivate: [LandingpageGuard], component: NuihComponent, data: {
+    path: '', // root path '/' for the app
+    component: LandingPageComponent,
+    canActivate: [LandingpageGuard],
+    data: {
       telemetry: {
-        env: 'public', pageid: 'nuih', type: 'view', subtype: 'paginate'
-      }
-    }
-  },
-  {
-    path: 'learn', component: LearnComponent, data: {
-      telemetry: {
-        env: 'public', pageid: 'learn', type: 'view', subtype: 'paginate'
-      }
-    }
-  },
-  {
-    path: 'innovate', component: InnovateComponent, data: {
-      telemetry: {
-        env: 'public', pageid: 'innovate', type: 'view', subtype: 'paginate'
+        env: 'public', pageid: 'landing-page', type: 'edit', subtype: 'paginate'
       }
     }
   },
@@ -80,10 +68,10 @@ const routes: Routes = [
   },
   {
     path: ':slug/nulp', loadChildren: './module/nulp/nulp.module#NulpModule'
-  }
-  // {
-  //   path: 'nuih', loadChildren: './module/nuih/nuih.module#NuihModule'
-  // },
+  },
+  {
+    path: 'nuih', loadChildren: './module/nuih/nuih.module#NuihModule'
+  },
   // {
   //   path: ':slug/nuih', loadChildren: './module/nuih/nuih.module#NuihModule'
   // }

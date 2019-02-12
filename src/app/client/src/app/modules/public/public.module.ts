@@ -18,7 +18,6 @@ import { NgInviewModule } from 'angular-inport';
 import { DeviceDetectorModule } from 'ngx-device-detector';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { BadgingModule } from '@sunbird/badge';
-import { NuihComponent, LearnComponent, InnovateComponent } from './module/nuih';
 @NgModule({
   imports: [
     CommonModule,
@@ -34,7 +33,7 @@ import { NuihComponent, LearnComponent, InnovateComponent } from './module/nuih'
     BadgingModule
   ],
   declarations: [LandingPageComponent, SignupComponent, GetComponent, DialCodeComponent,
-    PublicFooterComponent, PublicContentPlayerComponent, PublicCollectionPlayerComponent, NuihComponent, LearnComponent, InnovateComponent],
+    PublicFooterComponent, PublicContentPlayerComponent, PublicCollectionPlayerComponent],
   providers: [SignupService, PublicPlayerService, DeviceDetectorService, SignupGuard, LandingpageGuard]
 })
 export class PublicModule { }

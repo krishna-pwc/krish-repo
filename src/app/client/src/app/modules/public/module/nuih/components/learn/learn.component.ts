@@ -51,8 +51,6 @@ export class LearnComponent implements OnInit, OnDestroy {
   /**
   * Contains result object returned from getPageData API.
   */
-  inspiredCarouselData: Array<ICaraouselData> = [];
-  opportunitiesCarouselData: Array<ICaraouselData> = [];
   booksCarouselData: Array<ICaraouselData> = [];
   public config: ConfigService;
   public filterType: string;
@@ -112,32 +110,12 @@ export class LearnComponent implements OnInit, OnDestroy {
             let noResultCounter = 0;
             this.showLoader = false;
             this.booksCarouselData = _.cloneDeep([apiResponse.sections[0]]);
-            this.inspiredCarouselData = _.cloneDeep([apiResponse.sections[1]]);
-            this.opportunitiesCarouselData = _.cloneDeep([apiResponse.sections[2]]);
             _.forEach(this.booksCarouselData, (value, index) => {
               if (this.booksCarouselData[index].contents && this.booksCarouselData[index].contents.length > 0) {
                 const constantData = this.config.appConfig.ExplorePage.constantData;
                 const metaData = this.config.appConfig.ExplorePage.metaData;
                 const dynamicFields = this.config.appConfig.ExplorePage.dynamicFields;
                 this.booksCarouselData[index].contents = this.utilService.getDataForCard(this.booksCarouselData[index].contents,
-                  constantData, dynamicFields, metaData);
-              }
-            });
-            _.forEach(this.inspiredCarouselData, (value, index) => {
-              if (this.inspiredCarouselData[index].contents && this.inspiredCarouselData[index].contents.length > 0) {
-                const constantData = this.config.appConfig.ExplorePage.constantData;
-                const metaData = this.config.appConfig.ExplorePage.metaData;
-                const dynamicFields = this.config.appConfig.ExplorePage.dynamicFields;
-                this.inspiredCarouselData[index].contents = this.utilService.getDataForCard(this.inspiredCarouselData[index].contents,
-                  constantData, dynamicFields, metaData);
-              }
-            });
-            _.forEach(this.opportunitiesCarouselData, (value, index) => {
-              if (this.opportunitiesCarouselData[index].contents && this.opportunitiesCarouselData[index].contents.length > 0) {
-                const constantData = this.config.appConfig.ExplorePage.constantData;
-                const metaData = this.config.appConfig.ExplorePage.metaData;
-                const dynamicFields = this.config.appConfig.ExplorePage.dynamicFields;
-                this.opportunitiesCarouselData[index].contents = this.utilService.getDataForCard(this.opportunitiesCarouselData[index].contents,
                   constantData, dynamicFields, metaData);
               }
             });
@@ -365,8 +343,6 @@ export class LearnComponent implements OnInit, OnDestroy {
             this.filters[key] = value;
           }
         });
-        this.inspiredCarouselData = [];
-        this.opportunitiesCarouselData = [];
         this.booksCarouselData = [];
         if (this.queryParams.sort_by && this.queryParams.sortType) {
           this.queryParams.sortType = this.queryParams.sortType.toString();

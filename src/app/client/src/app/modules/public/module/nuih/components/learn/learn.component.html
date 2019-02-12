@@ -3,15 +3,15 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
                 <div class="container"> <a class="navbar-brand js-scroll-trigger" href="#page-top"><img
-                            src="img/nuih-logo.jpg" width="100%" height="100%" alt=""></a>
+                            src="./assets/nuih/img/nuih-logo.jpg" width="100%" height="100%" alt=""></a>
                     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                         data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                         aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="#about">About Us</a> </li>
-                            <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="#services">Learn</a> </li>
-                            <li class="nav-item"> <a class="nav-link js-scroll-trigger nav-active"
+                            <li class="nav-item"> <a class="nav-link js-scroll-trigger nav-active" href="#services">Learn</a> </li>
+                            <li class="nav-item"> <a class="nav-link js-scroll-trigger"
                                     href="#portfolio">Innovate</a> </li>
                             <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="#contact">Data
                                     Exchange</a> </li>
@@ -29,7 +29,7 @@
     <!--==========================
                   Intro Section
                 ============================-->
-    <section id="intro">
+    <section id="intro" class="learning-banner">
         <div class="intro-content">
             <div class="container text-center">
                 <h2>NATIONAL URBAN LEARNING PROGRAM</h2>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="section-header margin-top130">
                     <h2>
-                        <img src="img/bb.jpg" width="100%">
+                        <img src="./assets/nuih/img/bb.jpg" width="100%">
                     </h2>
 
                 </div>
@@ -83,23 +83,43 @@
                     </div>
                     <div class="col-lg-10">
                         <div class="container">
-                            <div id="demo" class="carousel slide" data-ride="carousel">
+                            <div class="ui grid margin-bottom-0 hidden-section">
+                                <div class="twelve wide column">
+                                    <app-prominent-filter [pageId]="'explore-page'" *ngIf="filterType"
+                                        [filterEnv]="filterType" [ignoreQuery]="['key', 'language']"
+                                        [accordionDefaultOpen]=true [isShowFilterLabel]=true [showSearchedParam]=true
+                                        [isShowFilterLabel]=true [hashTagId]="hashTagId"
+                                        (prominentFilter)="getFilters($event)"></app-prominent-filter>
+                                </div>
+                            </div>
 
-                                <!-- Indicators -->
+                            <div *ngFor="let section of booksCarouselData">
+                                <app-page-section (visits)="prepareVisits($event)" (playEvent)="playContent($event)"
+                                    [section]="section"></app-page-section>
+                            </div>
+                            <div class="twelve wide column" *ngIf="showLoader">
+                                <app-loader [data]='loaderMessage'></app-loader>
+                            </div>
+                            <div *ngIf="noResult && !showLoader">
+                                <app-no-result [data]="noResultMessage"></app-no-result>
+                            </div>
+                            <!-- <div id="demo" class="carousel slide" data-ride="carousel">
+
+                                
                                 <ul class="carousel-indicators mb-0 pb-0">
                                     <li data-target="#demo" data-slide-to="0" class="active"></li>
                                     <li data-target="#demo" data-slide-to="1"></li>
                                     <li data-target="#demo" data-slide-to="2"></li>
                                 </ul>
 
-                                <!-- The slideshow -->
+                                
                                 <div class="carousel-inner no-padding ">
-                                    <!-- Left and right controls -->
+                                    
 
                                     <div class="carousel-item active">
                                         <div class="col-xs-4 col-sm-4 col-md-4 pull-left">
                                             <div class="small-bow"> <a href="#" onclick=abc(this) class="slider_info">
-                                                    <img class="img-fluid card-img-top" src="img/smart.jpg"
+                                                    <img class="img-fluid card-img-top" src="./assets/nuih/img/smart.jpg"
                                                         width="305px"> </a>
                                                 <div class="silder-content oppor">
                                                     <p><b>Light up the path</b></p>
@@ -112,7 +132,7 @@
                                         </div>
                                         <div class="col-xs-4 col-sm-4 col-md-4 pull-left">
                                             <div class="small-bow"> <a href="#" onclick=abc(this) class="slider_info">
-                                                    <img class="img-fluid card-img-top" src="img/smart2.jpg"
+                                                    <img class="img-fluid card-img-top" src="./assets/nuih/img/smart2.jpg"
                                                         width="305px"> </a>
                                                 <div class="silder-content oppor">
                                                     <p><b>Light up the path</b></p>
@@ -125,7 +145,7 @@
                                         </div>
                                         <div class="col-xs-4 col-sm-4 col-md-4 pull-left">
                                             <div class="small-bow"> <a href="#" onclick=abc(this) class="slider_info">
-                                                    <img class="img-fluid card-img-top" src="img/smart3.jpg"
+                                                    <img class="img-fluid card-img-top" src="./assets/nuih/img/smart3.jpg"
                                                         width="305px"> </a>
                                                 <div class="silder-content oppor">
                                                     <p><b>Light up the path</b></p>
@@ -140,7 +160,7 @@
                                     <div class="carousel-item">
                                         <div class="col-xs-4 col-sm-4 col-md-4 pull-left">
                                             <div class="small-bow"> <a href="#" onclick=abc(this) class="slider_info">
-                                                    <img class="img-fluid card-img-top" src="img/smart.jpg"
+                                                    <img class="img-fluid card-img-top" src="./assets/nuih/img/smart.jpg"
                                                         width="305px"> </a>
                                                 <div class="silder-content oppor">
                                                     <p><b>Light up the path</b></p>
@@ -153,7 +173,7 @@
                                         </div>
                                         <div class="col-xs-4 col-sm-4 col-md-4 pull-left">
                                             <div class="small-bow"> <a href="#" onclick=abc(this) class="slider_info">
-                                                    <img class="img-fluid card-img-top" src="img/smart2.jpg"
+                                                    <img class="img-fluid card-img-top" src="./assets/nuih/img/smart2.jpg"
                                                         width="305px"> </a>
                                                 <div class="silder-content oppor">
                                                     <p><b>Light up the path</b></p>
@@ -166,7 +186,7 @@
                                         </div>
                                         <div class="col-xs-4 col-sm-4 col-md-4 pull-left">
                                             <div class="small-bow"> <a href="#" onclick=abc(this) class="slider_info">
-                                                    <img class="img-fluid card-img-top" src="img/smart3.jpg"
+                                                    <img class="img-fluid card-img-top" src="./assets/nuih/img/smart3.jpg"
                                                         width="305px"> </a>
                                                 <div class="silder-content oppor">
                                                     <p><b>Light up the path</b></p>
@@ -183,7 +203,7 @@
                                         class="carousel-control-next" href="#demo" data-slide="next"> <span
                                             class="carousel-control-prev-icon sp"></span> </a>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -205,7 +225,8 @@
                             <div class="carousel-item active">
                                 <div class="col-xs-4 col-sm-4 col-md-4 pull-left">
                                     <div class="small-bow"> <a href="#" onclick=abc(this) class="slider_info"> <img
-                                                class="img-fluid card-img-top" src="img/smart.jpg" width="305px"> </a>
+                                                class="img-fluid card-img-top" src="./assets/nuih/img/smart.jpg"
+                                                width="305px"> </a>
                                         <div class="silder-content oppor">
                                             <p><b>Light up the path</b></p>
                                             <p>Looking for innovation ides on solar lighting the streets of Nagoan
@@ -217,7 +238,8 @@
                                 </div>
                                 <div class="col-xs-4 col-sm-4 col-md-4 pull-left">
                                     <div class="small-bow"> <a href="#" onclick=abc(this) class="slider_info"> <img
-                                                class="img-fluid card-img-top" src="img/smart2.jpg" width="305px"> </a>
+                                                class="img-fluid card-img-top" src="./assets/nuih/img/smart2.jpg"
+                                                width="305px"> </a>
                                         <div class="silder-content oppor">
                                             <p><b>Light up the path</b></p>
                                             <p>Looking for innovation ides on solar lighting the streets of Nagoan
@@ -229,7 +251,8 @@
                                 </div>
                                 <div class="col-xs-4 col-sm-4 col-md-4 pull-left">
                                     <div class="small-bow"> <a href="#" onclick=abc(this) class="slider_info"> <img
-                                                class="img-fluid card-img-top" src="img/smart3.jpg" width="305px"> </a>
+                                                class="img-fluid card-img-top" src="./assets/nuih/img/smart3.jpg"
+                                                width="305px"> </a>
                                         <div class="silder-content oppor">
                                             <p><b>Light up the path</b></p>
                                             <p>Looking for innovation ides on solar lighting the streets of Nagoan
@@ -243,7 +266,8 @@
                             <div class="carousel-item">
                                 <div class="col-xs-4 col-sm-4 col-md-4 pull-left">
                                     <div class="small-bow"> <a href="#" onclick=abc(this) class="slider_info"> <img
-                                                class="img-fluid card-img-top" src="img/smart.jpg" width="305px"> </a>
+                                                class="img-fluid card-img-top" src="./assets/nuih/img/smart.jpg"
+                                                width="305px"> </a>
                                         <div class="silder-content oppor">
                                             <p><b>Light up the path</b></p>
                                             <p>Looking for innovation ides on solar lighting the streets of Nagoan
@@ -255,7 +279,8 @@
                                 </div>
                                 <div class="col-xs-4 col-sm-4 col-md-4 pull-left">
                                     <div class="small-bow"> <a href="#" onclick=abc(this) class="slider_info"> <img
-                                                class="img-fluid card-img-top" src="img/smart2.jpg" width="305px"> </a>
+                                                class="img-fluid card-img-top" src="./assets/nuih/img/smart2.jpg"
+                                                width="305px"> </a>
                                         <div class="silder-content oppor">
                                             <p><b>Light up the path</b></p>
                                             <p>Looking for innovation ides on solar lighting the streets of Nagoan
@@ -267,7 +292,8 @@
                                 </div>
                                 <div class="col-xs-4 col-sm-4 col-md-4 pull-left">
                                     <div class="small-bow"> <a href="#" onclick=abc(this) class="slider_info"> <img
-                                                class="img-fluid card-img-top" src="img/smart3.jpg" width="305px"> </a>
+                                                class="img-fluid card-img-top" src="./assets/nuih/img/smart3.jpg"
+                                                width="305px"> </a>
                                         <div class="silder-content oppor">
                                             <p><b>Light up the path</b></p>
                                             <p>Looking for innovation ides on solar lighting the streets of Nagoan
@@ -399,7 +425,8 @@
                             <div class="carousel-item active">
                                 <div class="col-xs-4 col-sm-4 col-md-4 pull-left">
                                     <div class="small-bow"> <a href="#" onclick=abc(this) class="slider_info"> <img
-                                                class="img-fluid card-img-top" src="img/smart.jpg" width="305px"> </a>
+                                                class="img-fluid card-img-top" src="./assets/nuih/img/smart.jpg"
+                                                width="305px"> </a>
                                         <div class="silder-content oppor">
                                             <p><b>Light up the path</b></p>
                                             <p>Looking for innovation ides on solar lighting the streets of Nagoan
@@ -411,7 +438,8 @@
                                 </div>
                                 <div class="col-xs-4 col-sm-4 col-md-4 pull-left">
                                     <div class="small-bow"> <a href="#" onclick=abc(this) class="slider_info"> <img
-                                                class="img-fluid card-img-top" src="img/smart2.jpg" width="305px"> </a>
+                                                class="img-fluid card-img-top" src="./assets/nuih/img/smart2.jpg"
+                                                width="305px"> </a>
                                         <div class="silder-content oppor">
                                             <p><b>Light up the path</b></p>
                                             <p>Looking for innovation ides on solar lighting the streets of Nagoan
@@ -423,7 +451,8 @@
                                 </div>
                                 <div class="col-xs-4 col-sm-4 col-md-4 pull-left">
                                     <div class="small-bow"> <a href="#" onclick=abc(this) class="slider_info"> <img
-                                                class="img-fluid card-img-top" src="img/smart3.jpg" width="305px"> </a>
+                                                class="img-fluid card-img-top" src="./assets/nuih/img/smart3.jpg"
+                                                width="305px"> </a>
                                         <div class="silder-content oppor">
                                             <p><b>Light up the path</b></p>
                                             <p>Looking for innovation ides on solar lighting the streets of Nagoan
@@ -437,7 +466,8 @@
                             <div class="carousel-item">
                                 <div class="col-xs-4 col-sm-4 col-md-4 pull-left">
                                     <div class="small-bow"> <a href="#" onclick=abc(this) class="slider_info"> <img
-                                                class="img-fluid card-img-top" src="img/smart.jpg" width="305px"> </a>
+                                                class="img-fluid card-img-top" src="./assets/nuih/img/smart.jpg"
+                                                width="305px"> </a>
                                         <div class="silder-content oppor">
                                             <p><b>Light up the path</b></p>
                                             <p>Looking for innovation ides on solar lighting the streets of Nagoan
@@ -449,7 +479,8 @@
                                 </div>
                                 <div class="col-xs-4 col-sm-4 col-md-4 pull-left">
                                     <div class="small-bow"> <a href="#" onclick=abc(this) class="slider_info"> <img
-                                                class="img-fluid card-img-top" src="img/smart2.jpg" width="305px"> </a>
+                                                class="img-fluid card-img-top" src="./assets/nuih/img/smart2.jpg"
+                                                width="305px"> </a>
                                         <div class="silder-content oppor">
                                             <p><b>Light up the path</b></p>
                                             <p>Looking for innovation ides on solar lighting the streets of Nagoan
@@ -461,7 +492,8 @@
                                 </div>
                                 <div class="col-xs-4 col-sm-4 col-md-4 pull-left">
                                     <div class="small-bow"> <a href="#" onclick=abc(this) class="slider_info"> <img
-                                                class="img-fluid card-img-top" src="img/smart3.jpg" width="305px"> </a>
+                                                class="img-fluid card-img-top" src="./assets/nuih/img/smart3.jpg"
+                                                width="305px"> </a>
                                         <div class="silder-content oppor">
                                             <p><b>Light up the path</b></p>
                                             <p>Looking for innovation ides on solar lighting the streets of Nagoan
@@ -488,7 +520,8 @@
 
                 </div>
                 <div class="owl-carousel testimonials-carousel">
-                    <div class="testimonial-item imc"> <img src="img/pp.png" class=" pro-img" alt="" width="115">
+                    <div class="testimonial-item imc"> <img src="./assets/nuih/img/pp.png" class=" pro-img" alt=""
+                            width="115">
                         <div class="col-md-12 col-lg-12"><br>
                             <br>
                             <br>
@@ -500,7 +533,8 @@
                                 Accelerator and are scaling our operations and inpact."</p>
                         </div>
                     </div>
-                    <div class="testimonial-item imc"> <img src="img/pp.png" class=" pro-img" alt="" width="115">
+                    <div class="testimonial-item imc"> <img src="./assets/nuih/img/pp.png" class=" pro-img" alt=""
+                            width="115">
                         <div class="col-md-12 col-lg-12"><br>
                             <br>
                             <br>
@@ -551,7 +585,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg" id="mainNav2">
                 <div class="container"> <a class="navbar-brand js-scroll-trigger" href="#page-top"><img
-                            src="img/footer-logo.jpg" width="433" height="118" alt=""></a>
+                            src="./assets/nuih/img/footer-logo.jpg" width="433" height="118" alt=""></a>
                     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                         data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                         aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
